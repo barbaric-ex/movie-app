@@ -16,14 +16,13 @@ import { ref, inject, onMounted, watch } from 'vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import MovieCard from '@/components/MovieCard/MovieCard.vue'
 
-// Uzimamo dodane filmove iz globalnog stanja (myMovies)
 const myMovies = inject('my-movies', ref([]))
 
 function removeThisMovie(movieId) {
   const index = myMovies.value.findIndex(movie => movie.id === movieId)
   if (index !== -1) {
-    myMovies.value.splice(index, 1) // Ukloni film iz liste
-    localStorage.setItem('myMovies', JSON.stringify(myMovies.value)) // Ažuriraj LocalStorage
+    myMovies.value.splice(index, 1)
+    localStorage.setItem('myMovies', JSON.stringify(myMovies.value))
   }
 }
 </script>
